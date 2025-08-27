@@ -1,0 +1,49 @@
+### Health Check
+GET http://localhost:5000/
+
+###
+
+### Get small Fibonacci number
+GET http://localhost:5000/fibonacci/10
+
+###
+
+### Get medium Fibonacci number
+GET http://localhost:5000/fibonacci/20
+
+###
+
+### Get larger Fibonacci number (will be slow on first call)
+GET http://localhost:5000/fibonacci/1000
+
+###
+
+### Get same large number again (should be fast due to cache)
+GET http://localhost:5000/fibonacci/1000
+
+###
+
+### Get another large number (benefits from cached intermediate values)
+GET http://localhost:5000/fibonacci/1500
+
+###
+
+### Get very large Fibonacci number
+GET http://localhost:5000/fibonacci/10000
+
+###
+
+### Get cache statistics
+GET http://localhost:5000/fibonacci/cache
+
+###
+
+### Clear Fibonacci cache
+DELETE http://localhost:5000/fibonacci/cache
+
+###
+
+### Test after cache clear (should be slow again)
+GET http://localhost:5000/fibonacci/1000
+
+###
