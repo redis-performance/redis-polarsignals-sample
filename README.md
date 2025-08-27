@@ -7,13 +7,6 @@ A Flask application with Redis that computes Fibonacci numbers using iterative a
 - Python 3.12+
 - Redis server running (default: localhost:6379)
 
-## Installation
-
-1. Install dependencies:
-```bash
-pip install flask>=2.3.0 redis>=4.5.0
-```
-
 ## Running the Application
 
 ### Option 1: Using Docker Compose (Recommended)
@@ -38,7 +31,12 @@ This will start Redis, the Flask app, and Parca agent for continuous profiling. 
 ### Option 2: Local Development
 
 1. Make sure Redis is running on your system
-2. Run the Flask app:
+2. Install dependencies and activate the virtual environment:
+```bash
+poetry install
+poetry shell
+```
+3. Run the Flask app:
 ```bash
 python app.py
 ```
