@@ -18,12 +18,22 @@ pip install flask>=2.3.0 redis>=4.5.0
 
 ### Option 1: Using Docker Compose (Recommended)
 
-1. Run with Docker Compose:
+1. Copy the environment template:
+```bash
+cp .env.example .env
+```
+
+2. Edit `.env` and add your Polar Signals token (optional):
+```bash
+POLAR_SIGNALS_TOKEN=your_actual_token_here
+```
+
+3. Run with Docker Compose:
 ```bash
 docker-compose up --build
 ```
 
-This will start both Redis and the Flask app. The application will be available at `http://localhost:5000`
+This will start Redis, the Flask app, and Parca agent for continuous profiling. The application will be available at `http://localhost:5000`
 
 ### Option 2: Local Development
 
@@ -99,6 +109,7 @@ Health check endpoint.
 - `REDIS_HOST`: Redis host (default: localhost)
 - `REDIS_PORT`: Redis port (default: 6379)
 - `REDIS_DB`: Redis database number (default: 0)
+- `POLAR_SIGNALS_TOKEN`: Bearer token for Polar Signals continuous profiling (optional)
 
 ## Example Usage
 
@@ -131,3 +142,14 @@ curl http://localhost:5000/
    - `cache_hits`: Number of values found in cache
    - `cache_misses`: Number of values computed and stored
    - `cache_miss_rate_percent`: Percentage of cache misses (lower is better)
+
+## Continuous Profiling
+
+The application includes Parca agent for continuous profiling with Polar Signals:
+
+- **CPU Profiling**: Samples at 19Hz to capture performance characteristics
+- **Memory Profiling**: Tracks memory allocation patterns
+- **Performance Insights**: Identify bottlenecks in Fibonacci computation and caching
+- **Production Ready**: Low overhead profiling suitable for production environments
+
+To enable profiling, set the `POLAR_SIGNALS_TOKEN` environment variable with your Polar Signals API token.
